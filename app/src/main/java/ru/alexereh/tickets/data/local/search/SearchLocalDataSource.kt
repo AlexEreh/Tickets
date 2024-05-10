@@ -5,7 +5,6 @@ import androidx.datastore.preferences.core.Preferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.alexereh.tickets.data.local.DataStorePrefencesKeys.FIRST_SEARCH_KEY
-import ru.alexereh.tickets.data.local.tickets.TicketsLocalDataSource
 import javax.inject.Inject
 
 class SearchLocalDataSource @Inject constructor(

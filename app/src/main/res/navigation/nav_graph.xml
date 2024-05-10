@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/ticketsFragment"
-        android:name="ru.alexereh.tickets.feature.tickets.presentation.fragment.TicketsFragment"
+        android:name="ru.alexereh.tickets.presentation.tickets.fragment.TicketsFragment"
         android:label="TicketsFragment" >
         <action
             android:id="@+id/action_ticketsFragment_to_searchFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <dialog
         android:id="@+id/searchFragment"
-        android:name="ru.alexereh.tickets.feature.search.presentation.fragment.SearchFragment"
+        android:name="ru.alexereh.tickets.presentation.search.fragment.SearchFragment"
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_searchFragment_to_selectedSearchFragment"
@@ -22,10 +22,10 @@
     </dialog>
     <fragment
         android:id="@+id/selectedSearchFragment"
-        android:name="ru.alexereh.tickets.feature.selectedsearch.presentation.fragment.SelectedSearchFragment"
+        android:name="ru.alexereh.tickets.presentation.selectedsearch.fragment.SelectedSearchFragment"
         android:label="SelectedSearchFragment" />
     <fragment
         android:id="@+id/allTicketsFragment"
-        android:name="ru.alexereh.tickets.feature.alltickets.presentation.fragment.AllTicketsFragment"
+        android:name="ru.alexereh.tickets.presentation.alltickets.fragment.AllTicketsFragment"
         android:label="AllTicketsFragment" />
 </navigation>

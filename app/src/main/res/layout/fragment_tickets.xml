@@ -87,7 +87,7 @@
                         android:fontFamily="sans-serif-medium"
                         android:hint="Куда - Турция"
                         android:importantForAutofill="no"
-                        android:inputType="textAutoComplete"
+                        android:inputType="none"
                         android:paddingVertical="8dp"
                         android:textColor="@color/white"
                         android:textColorHint="#9F9F9F"
@@ -121,9 +121,9 @@
             app:layout_constraintTop_toBottomOf="@id/fields" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/musical_rv"
+            android:id="@+id/offer_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="214dp"
             android:layout_marginTop="19dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +146,7 @@
             app:backgroundTint="#2F3035"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/musical_rv" />
+            app:layout_constraintTop_toBottomOf="@id/offer_rv" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

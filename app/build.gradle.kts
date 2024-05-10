@@ -42,6 +42,8 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
     implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.androidx.datastorePreferences)
