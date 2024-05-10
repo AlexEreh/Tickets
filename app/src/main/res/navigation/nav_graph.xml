@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ticketsFragment">
+
+    <fragment
+        android:id="@+id/ticketsFragment"
+        android:name="ru.alexereh.tickets.feature.tickets.presentation.fragment.TicketsFragment"
+        android:label="TicketsFragment" >
+        <action
+            android:id="@+id/action_ticketsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/searchFragment"
+        android:name="ru.alexereh.tickets.feature.search.presentation.fragment.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_selectedSearchFragment"
+            app:destination="@id/selectedSearchFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/selectedSearchFragment"
+        android:name="ru.alexereh.tickets.feature.selectedsearch.presentation.fragment.SelectedSearchFragment"
+        android:label="SelectedSearchFragment" />
+    <fragment
+        android:id="@+id/allTicketsFragment"
+        android:name="ru.alexereh.tickets.feature.alltickets.presentation.fragment.AllTicketsFragment"
+        android:label="AllTicketsFragment" />
+</navigation>
