@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.alexereh.tickets.databinding.CardDirectionBinding
 import ru.alexereh.tickets.presentation.search.model.DirectionModel
 
-class DirectionAdapter() : RecyclerView.Adapter<DirectionViewHolder>() {
+class DirectionAdapter(val selectedCity: (String) -> Unit) :
+    RecyclerView.Adapter<DirectionViewHolder>() {
     val data = listOf(
         DirectionModel(id = 1, town = "Стамбул"),
         DirectionModel(id = 2, town = "Сочи"),
@@ -16,6 +17,12 @@ class DirectionAdapter() : RecyclerView.Adapter<DirectionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DirectionViewHolder {
         val binding =
             CardDirectionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        with(binding) {
+            root.isClickable = true
+            root.setOnClickListener {
+                selectedCity(directionTownTv.text.toString())
+            }
+        }
         return DirectionViewHolder(binding)
     }
 

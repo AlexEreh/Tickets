@@ -18,7 +18,7 @@ class RemoteDataSourceModule {
     @Singleton
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
-        .baseUrl("https://tickets-alexereh.free.beeceptor.com/")
+        .baseUrl("https://api.npoint.io/")
         .build()
 
     @Provides

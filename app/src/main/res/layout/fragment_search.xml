@@ -32,7 +32,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/airplane_takeoff_iv"
+                android:id="@+id/back_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_airplane_takeoff" />
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:constraint_referenced_ids="airplane_takeoff_iv,upper_et"
+                app:constraint_referenced_ids="back_iv,upper_et"
                 app:flow_horizontalGap="6dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,13 +115,14 @@
         android:paddingBottom="30dp">
 
         <LinearLayout
+            android:id="@+id/difficult_route_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -140,6 +141,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/anywhere_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -147,7 +149,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -168,6 +170,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/holidays_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -175,7 +178,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -195,13 +198,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/hot_tickets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

@@ -5,4 +5,5 @@
     <string name="app_bar_shorter">Короче</string>
     <string name="app_bar_subscriptions">Подписки</string>
     <string name="app_bar_profile">Профиль</string>
+    <string name="text_anywhere">Куда угодно</string>
 </resources>

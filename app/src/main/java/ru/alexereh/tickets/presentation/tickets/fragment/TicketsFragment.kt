@@ -41,14 +41,13 @@ class TicketsFragment @Inject constructor() : Fragment() {
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            lowerEt.isFocusable = true
-            lowerEt.setOnFocusChangeListener { v, hasFocus ->
-                if (!hasFocus) {
-                    return@setOnFocusChangeListener
-                }
+            lowerEt.isFocusable = false
+            lowerEt.setOnClickListener { v ->
                 viewModel.onFirstSearch(upperEt.text.toString())
                 Navigation.findNavController(this@TicketsFragment.requireView())
                     .navigate(R.id.action_ticketsFragment_to_searchFragment)
+                v.clearFocus()
+                upperEt.requestFocus()
             }
             lifecycleScope.launch {
                 viewModel.musicalFlights

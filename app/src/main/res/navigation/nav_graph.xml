@@ -10,7 +10,8 @@
         android:label="TicketsFragment" >
         <action
             android:id="@+id/action_ticketsFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:launchSingleTop="true" />
     </fragment>
     <dialog
         android:id="@+id/searchFragment"
@@ -18,14 +19,33 @@
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_searchFragment_to_selectedSearchFragment"
-            app:destination="@id/selectedSearchFragment" />
+            app:destination="@id/selectedSearchFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_searchFragment_to_stubReturnNavFragment"
+            app:destination="@id/stubReturnNavFragment"
+            app:launchSingleTop="true" />
     </dialog>
     <fragment
         android:id="@+id/selectedSearchFragment"
         android:name="ru.alexereh.tickets.presentation.selectedsearch.fragment.SelectedSearchFragment"
-        android:label="SelectedSearchFragment" />
+        android:label="SelectedSearchFragment">
+        <action
+            android:id="@+id/action_selectedSearchFragment_to_ticketsFragment"
+            app:destination="@id/ticketsFragment"
+            app:launchSingleTop="true" />
+    </fragment>
     <fragment
         android:id="@+id/allTicketsFragment"
         android:name="ru.alexereh.tickets.presentation.alltickets.fragment.AllTicketsFragment"
         android:label="AllTicketsFragment" />
+    <fragment
+        android:id="@+id/stubReturnNavFragment"
+        android:name="ru.alexereh.tickets.navigation.StubReturnNavFragment"
+        android:label="StubReturnNavFragment">
+        <action
+            android:id="@+id/action_stubReturnNavFragment_to_ticketsFragment"
+            app:destination="@id/ticketsFragment"
+            app:launchSingleTop="true" />
+    </fragment>
 </navigation>
