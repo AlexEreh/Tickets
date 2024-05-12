@@ -7,7 +7,6 @@
     android:background="#FF0C0C0C">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -32,6 +31,7 @@
                 android:id="@+id/back_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 android:src="@drawable/ic_left_arrow" />
 
             <EditText
@@ -43,7 +43,7 @@
 
                 android:fontFamily="@font/sf_pro"
                 android:paddingVertical="4dp"
-                android:hint="Откуда - Москва"
+                android:hint="@string/departure_placeholder"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="none"
@@ -57,7 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="Куда - Турция"
+                android:hint="@string/arrival_placeholder"
                 android:focusable="false"
                 android:fontFamily="@font/sf_pro"
                 android:importantForAutofill="no"
@@ -72,6 +72,7 @@
                 android:id="@+id/cross_iv"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:contentDescription="@null"
                 android:padding="4dp"
                 android:src="@drawable/ic_cross_icon" />
 
@@ -79,6 +80,7 @@
                 android:id="@+id/swap_iv"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:contentDescription="@null"
                 android:padding="4dp"
                 android:src="@drawable/ic_swap" />
 
@@ -138,7 +140,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tickets_offers"
             android:layout_width="0dp"
-            android:layout_height="254dp"
+            android:layout_height="270dp"
             android:layout_marginHorizontal="16dp"
             android:background="@drawable/bg_tickets_offers"
             android:paddingHorizontal="16dp"
@@ -152,7 +154,7 @@
                 android:id="@+id/direct_offers_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Прямые рельсы"
+                android:text="@string/direct_flights"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -188,7 +190,8 @@
             android:background="@drawable/bg_show_all_tickets_button"
             android:backgroundTint="#2261BC"
             android:clickable="true"
-            android:text="Посмотреть все билеты"
+            android:focusable="true"
+            android:text="@string/show_all_tickets"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"

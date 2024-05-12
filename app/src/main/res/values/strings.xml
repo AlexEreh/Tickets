@@ -6,4 +6,10 @@
     <string name="app_bar_subscriptions">Подписки</string>
     <string name="app_bar_profile">Профиль</string>
     <string name="text_anywhere">Куда угодно</string>
+    <string name="direct_flights">Прямые рельсы</string>
+    <string name="show_all_tickets">Посмотреть все билеты</string>
+    <string name="arrival_placeholder">Куда - Турция</string>
+    <string name="departure_placeholder">Откуда - Москва</string>
+    <string name="subscription_on_price">Подписка на цену</string>
+    <string name="popular_direction">Популярное направление</string>
 </resources>

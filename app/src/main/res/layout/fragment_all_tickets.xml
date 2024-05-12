@@ -22,8 +22,9 @@
             android:id="@+id/back_iv"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:contentDescription="Go to previous screen"
             android:src="@drawable/ic_left_arrow"
-            android:tint="#2261BC" />
+            app:tint="#2261BC" />
 
         <TextView
             android:id="@+id/towns_tv"
@@ -89,10 +90,12 @@
             android:id="@+id/filter_iv"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:contentDescription="@null"
             android:src="@drawable/ic_settings"
-            android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/filter_tv"
@@ -104,6 +107,7 @@
             android:textStyle="italic"
             android:textColor="@color/white"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/filter_iv" />
 
         <ImageView
@@ -111,11 +115,12 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
+            android:contentDescription="@null"
             android:src="@drawable/ic_settings"
-            android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/filter_tv"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -125,6 +130,8 @@
             android:fontFamily="@font/sf_pro"
             android:textStyle="italic"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/chart_iv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

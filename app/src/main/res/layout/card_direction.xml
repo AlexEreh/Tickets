@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro"
         android:textStyle="bold"
-        android:text="Стамбул"
+        tools:text="Стамбул"
         android:textColor="@color/white" />
 
     <TextView
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro"
         android:textStyle="normal"
-        android:text="Популярное направление"
+        android:text="@string/popular_direction"
         android:textColor="#5E5F61" />
 
     <com.google.android.material.divider.MaterialDivider

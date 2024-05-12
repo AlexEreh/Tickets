@@ -1,11 +1,8 @@
 package ru.alexereh.tickets.domain.usecase
 
 import ru.alexereh.tickets.domain.repository.SelectedSearchRepository
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class SwapDepratureArrivalTownsUseCase @Inject constructor(
+class SwapDepratureArrivalTownsUseCase(
     private val repository: SelectedSearchRepository
 ) {
     operator fun invoke() {

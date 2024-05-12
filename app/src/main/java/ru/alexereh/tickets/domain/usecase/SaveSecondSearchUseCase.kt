@@ -1,11 +1,8 @@
 package ru.alexereh.tickets.domain.usecase
 
 import ru.alexereh.tickets.domain.repository.SearchRepository
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class SaveSecondSearchUseCase @Inject constructor(
+class SaveSecondSearchUseCase(
     private val repository: SearchRepository
 ) {
     operator fun invoke(text: String) {

@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg_button_price_subscription"
     android:clickable="true"
+    android:focusable="true"
     android:paddingHorizontal="16dp"
     android:paddingVertical="14dp">
 
@@ -21,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Подписка на цену"
+        android:text="@string/subscription_on_price"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:fontFamily="@font/sf_pro"
@@ -30,7 +31,7 @@
         app:layout_constraintStart_toEndOf="@id/notification_iv"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/notification_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
