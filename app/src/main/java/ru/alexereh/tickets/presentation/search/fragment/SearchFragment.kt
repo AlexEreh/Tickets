@@ -20,6 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -31,7 +32,7 @@ import ru.alexereh.tickets.presentation.search.viewmodel.SearchViewModel
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
-
+@AndroidEntryPoint
 class SearchFragment @Inject constructor(): BottomSheetDialogFragment() {
     private lateinit var binding: FragmentSearchBinding
     private lateinit var viewModel: SearchViewModel

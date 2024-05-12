@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -20,10 +21,16 @@ import ru.alexereh.tickets.presentation.alltickets.recycler.TicketItemDecoration
 import ru.alexereh.tickets.presentation.alltickets.viewmodel.AllTicketsViewModel
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class AllTicketsFragment @Inject constructor() : Fragment() {
     lateinit var binding: FragmentAllTicketsBinding
     lateinit var viewModel: AllTicketsViewModel
+
+    @Inject
     lateinit var adapter: AllTicketsAdapter
+
+    @Inject
+    lateinit var itemDecoration: TicketItemDecoration
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,9 +39,8 @@ class AllTicketsFragment @Inject constructor() : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(AllTicketsViewModel::class.java)
         binding = FragmentAllTicketsBinding.inflate(inflater, container, false)
         with(binding) {
-            adapter = AllTicketsAdapter()
             ticketsRv.adapter = adapter
-            ticketsRv.addItemDecoration(TicketItemDecoration())
+            ticketsRv.addItemDecoration(itemDecoration)
             ticketsRv.layoutManager =
                 LinearLayoutManager(ticketsRv.context, LinearLayoutManager.VERTICAL, false)
             lifecycleScope.launch {

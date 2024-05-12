@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.alexereh.tickets.databinding.CardTicketBinding
 import ru.alexereh.tickets.domain.model.TicketModel
 import ru.alexereh.tickets.domain.model.TicketsModel
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class AllTicketsAdapter : RecyclerView.Adapter<TicketViewHolder>() {
+@Singleton
+class AllTicketsAdapter @Inject constructor() : RecyclerView.Adapter<TicketViewHolder>() {
     private val data = mutableListOf<TicketModel>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
         return TicketViewHolder(

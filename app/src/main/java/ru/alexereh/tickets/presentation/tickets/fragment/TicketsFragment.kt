@@ -28,7 +28,9 @@ import javax.inject.Inject
 class TicketsFragment @Inject constructor() : Fragment() {
     private lateinit var binding: FragmentTicketsBinding
     private lateinit var viewModel: TicketsViewModel
-    private val offerAdapter = OfferAdapter(emptyList())
+
+    @Inject
+    lateinit var offerAdapter: OfferAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

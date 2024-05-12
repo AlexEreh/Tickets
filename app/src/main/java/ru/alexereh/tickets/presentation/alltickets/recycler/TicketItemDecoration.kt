@@ -6,9 +6,12 @@ import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.math.roundToInt
 
-class TicketItemDecoration() : RecyclerView.ItemDecoration() {
+@Singleton
+class TicketItemDecoration @Inject constructor() : RecyclerView.ItemDecoration() {
     private val metrics: DisplayMetrics
 
     init {

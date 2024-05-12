@@ -47,7 +47,7 @@
         <ImageView
             android:id="@+id/arrow_iv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:adjustViewBounds="false"
             android:src="@drawable/ic_right_arrow"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -94,5 +94,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:constraint_referenced_ids="upper_row_layout,time_range_tv"
-        app:flow_verticalGap="4dp" />
+        app:flow_verticalGap="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

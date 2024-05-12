@@ -10,11 +10,13 @@ import ru.alexereh.tickets.databinding.CardMusicalFlightBinding
 import ru.alexereh.tickets.domain.model.OfferModel
 import ru.alexereh.tickets.domain.model.OffersModel
 import java.text.DecimalFormat
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-class OfferAdapter(data: List<OfferModel>) :
+@Singleton
+class OfferAdapter @Inject constructor() :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-        private val data: MutableList<OfferModel> = data.toMutableList()
+    private val data: MutableList<OfferModel> = mutableListOf()
 
     class OfferViewHolder(
         val binding: CardMusicalFlightBinding
