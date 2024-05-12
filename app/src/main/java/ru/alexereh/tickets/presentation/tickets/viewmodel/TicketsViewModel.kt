@@ -7,18 +7,24 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import ru.alexereh.tickets.domain.model.OffersModel
-import ru.alexereh.tickets.domain.usecase.tickets.LoadMusicalFlightsUseCase
-import ru.alexereh.tickets.domain.usecase.tickets.SaveFirstSearchUseCase
+import ru.alexereh.tickets.domain.usecase.LoadFirstSearchUseCase
+import ru.alexereh.tickets.domain.usecase.LoadOffersUseCase
+import ru.alexereh.tickets.domain.usecase.SaveFirstSearchUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class TicketsViewModel @Inject constructor(
-    private val loadMusicalFlightsUseCase: LoadMusicalFlightsUseCase,
+    private val loadOffersUseCase: LoadOffersUseCase,
     private val saveFirstSearchUseCase: SaveFirstSearchUseCase,
+    private val loadFirstSearchUseCase: LoadFirstSearchUseCase
 ): ViewModel() {
-    private val _musicalFlights = loadMusicalFlightsUseCase()
-    val musicalFlights: StateFlow<OffersModel> = _musicalFlights
+    private val _offers = loadOffersUseCase()
+    val offers: StateFlow<OffersModel> = _offers
         .stateIn(viewModelScope, SharingStarted.Eagerly, OffersModel(emptyList()))
+
+    private val _firstSearch = loadFirstSearchUseCase()
+    val firstSearch = _firstSearch
+        .stateIn(this.viewModelScope, SharingStarted.Eagerly, "")
 
     fun onFirstSearch(search: String) {
         saveFirstSearchUseCase(search)

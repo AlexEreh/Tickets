@@ -42,6 +42,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.multidex:multidex:2.0.1")
+
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     implementation(libs.androidx.fragment.ktx)

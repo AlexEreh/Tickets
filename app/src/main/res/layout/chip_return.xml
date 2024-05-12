@@ -8,6 +8,7 @@
     app:chipEndPadding="2dp"
     app:chipIcon="@drawable/ic_plus"
     app:chipIconTint="#DBDBDB"
+    app:chipIconSize="16dp"
     app:chipStartPadding="2dp"
     app:chipSurfaceColor="#2F3035">
 

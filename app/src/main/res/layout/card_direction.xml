@@ -18,6 +18,8 @@
         android:id="@+id/direction_town_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro"
+        android:textStyle="bold"
         android:text="Стамбул"
         android:textColor="@color/white" />
 
@@ -25,6 +27,8 @@
         android:id="@+id/direction_popular_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro"
+        android:textStyle="normal"
         android:text="Популярное направление"
         android:textColor="#5E5F61" />
 

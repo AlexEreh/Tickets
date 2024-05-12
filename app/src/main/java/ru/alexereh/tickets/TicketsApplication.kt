@@ -1,7 +1,7 @@
 package ru.alexereh.tickets
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class TicketsApplication: Application()
+class TicketsApplication : MultiDexApplication()

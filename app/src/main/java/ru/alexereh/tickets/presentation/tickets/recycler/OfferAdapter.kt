@@ -9,6 +9,7 @@ import ru.alexereh.tickets.R
 import ru.alexereh.tickets.databinding.CardMusicalFlightBinding
 import ru.alexereh.tickets.domain.model.OfferModel
 import ru.alexereh.tickets.domain.model.OffersModel
+import java.text.DecimalFormat
 
 
 class OfferAdapter(data: List<OfferModel>) :
@@ -18,11 +19,15 @@ class OfferAdapter(data: List<OfferModel>) :
     class OfferViewHolder(
         val binding: CardMusicalFlightBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+        private fun formatter(n: Int) =
+            DecimalFormat("#,###")
+                .format(n)
+                .replace(",", " ")
         @SuppressLint("SetTextI18n")
         fun bind(model: OfferModel) {
             binding.bandTv.text = model.title
             binding.cityTv.text = model.town
-            binding.priceTv.text = "от ${model.price.value} ₽"
+            binding.priceTv.text = "от ${formatter(model.price.value)} ₽"
             when (model.id) {
                 1 -> {
                     binding.flightIv.setImageDrawable(

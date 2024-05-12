@@ -1,16 +1,19 @@
 package ru.alexereh.tickets.presentation.tickets.fragment
 
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -50,9 +53,25 @@ class TicketsFragment @Inject constructor() : Fragment() {
                 upperEt.requestFocus()
             }
             lifecycleScope.launch {
-                viewModel.musicalFlights
+                viewModel.offers
                     .onEach {
                         offerAdapter.updateData(it)
+                    }
+                    .catch {
+                        Toast.makeText(this@TicketsFragment.context, it.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    .collect()
+            }
+            lifecycleScope.launch {
+                viewModel.firstSearch
+                    .onEach {
+                        upperEt.text = SpannableStringBuilder(it)
+                        upperEt.setSelection(it.length, it.length)
+                    }
+                    .catch {
+                        Toast.makeText(this@TicketsFragment.context, it.message, Toast.LENGTH_SHORT)
+                            .show()
                     }
                     .collect()
             }

@@ -7,13 +7,15 @@ import ru.alexereh.tickets.domain.model.OfferModel
 import ru.alexereh.tickets.domain.model.OffersModel
 import ru.alexereh.tickets.domain.model.PriceModel
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class OffersRemoteDataSource @Inject constructor(
-    private val offersRemoteApi: OffersRemoteApi
+    private val api: OffersRemoteApi
 ) {
-    fun getTickets(): Flow<OffersModel> {
+    fun getOffers(): Flow<OffersModel> {
         return flow {
-            val result = offersRemoteApi.getOffers()
+            val result = api.getOffers()
             val mappedResult = OffersModel(
                 offers = result.offers.map {
                     OfferModel(

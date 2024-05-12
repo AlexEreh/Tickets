@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         android:text="Тут пока ничего нет"
         android:textColor="@color/white"
+        android:fontFamily="@font/sf_pro"
+        android:textStyle="bold"
         android:textSize="22sp" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -22,6 +24,8 @@
         android:text="Вернуться"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:fontFamily="@font/sf_pro"
+        android:textStyle="bold"
         android:textSize="18sp" />
 
     <androidx.constraintlayout.helper.widget.Flow

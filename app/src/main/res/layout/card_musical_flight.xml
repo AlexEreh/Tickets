@@ -32,6 +32,8 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textColor="@color/white"
+            android:fontFamily="@font/sf_pro"
+            android:textStyle="bold"
             tools:text="Die Antwoord"/>
         <TextView
             android:id="@+id/city_tv"
@@ -39,6 +41,7 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             tools:text="Будапешт"
+            android:fontFamily="@font/sf_pro"
             android:textColor="@color/white"/>
         <ImageView
             android:id="@+id/price_iv"
@@ -52,15 +55,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="от 22 264 ₽"
+            android:fontFamily="@font/sf_pro"
             android:textColor="@color/white"/>
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/main_flow"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:flow_verticalGap="8dp"
+            app:flow_verticalGap="0dp"
             app:constraint_referenced_ids="band_tv,lower_flow"
             app:flow_verticalAlign="top"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +74,7 @@
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/lower_flow"
             app:constraint_referenced_ids="city_tv,row_flow"
-            app:flow_verticalGap="4dp"
+            app:flow_verticalGap="0dp"
             android:orientation="vertical"
             app:flow_verticalStyle="spread"
             app:flow_verticalAlign="top"

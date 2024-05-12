@@ -43,12 +43,13 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:focusable="false"
-                android:fontFamily="sans-serif-medium"
                 android:hint="Откуда - Москва"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="none"
-                android:paddingVertical="8dp"
+                android:fontFamily="@font/sf_pro"
+                android:paddingVertical="4dp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textColorHint="#9F9F9F"
                 android:textCursorDrawable="@drawable/cursor_edittext_home" />
@@ -77,11 +78,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/sf_pro"
+                android:paddingVertical="4dp"
                 android:hint="Куда - Турция"
                 android:importantForAutofill="no"
                 android:inputType="textAutoComplete"
-                android:paddingVertical="8dp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textColorHint="#9F9F9F"
                 android:textCursorDrawable="@drawable/cursor_edittext_home" />
@@ -133,6 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/sf_pro"
                 android:text="Сложный маршрут"
                 android:textAlignment="center"
                 android:textColor="@color/white">
@@ -162,6 +165,7 @@
                 android:layout_marginTop="8dp"
                 android:ellipsize="middle"
                 android:maxLines="1"
+                android:fontFamily="@font/sf_pro"
                 android:text="Куда угодно"
                 android:textAlignment="center"
                 android:textColor="@color/white">
@@ -191,6 +195,7 @@
                 android:layout_marginTop="8dp"
                 android:maxLines="1"
                 android:text="Выходные"
+                android:fontFamily="@font/sf_pro"
                 android:textAlignment="center"
                 android:textColor="@color/white">
 
@@ -217,6 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Горячие билеты"
+                android:fontFamily="@font/sf_pro"
                 android:textAlignment="center"
                 android:textColor="@color/white">
 

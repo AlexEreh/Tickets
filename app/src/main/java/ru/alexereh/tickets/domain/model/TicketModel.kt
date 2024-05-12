@@ -10,8 +10,6 @@ data class TicketModel(
     val arrival: DestinationArrivalModel,
     val hasTransfer: Boolean,
     val hasVisaTransfer: Boolean,
-    val luggage: LuggageModel,
-    val handLuggage: HandLuggageModel,
     val isReturnable: Boolean,
     val isExchangeable: Boolean
 )

@@ -18,9 +18,12 @@ class ChipsItemDecoration @Inject constructor() : RecyclerView.ItemDecoration() 
         metrics = Resources.getSystem().displayMetrics
     }
 
-    private val SPACING = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 67f, metrics)
+    private val SPACING = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, metrics)
     private val START_PADDING = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16f, metrics)
     private val END_PADDING = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16f, metrics)
+    private val PRE_FILTER_SPACE =
+        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 21f, metrics)
+
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -31,16 +34,15 @@ class ChipsItemDecoration @Inject constructor() : RecyclerView.ItemDecoration() 
             // Первый
             0 -> {
                 outRect.left = START_PADDING.roundToInt()
-                outRect.right = SPACING.roundToInt()
             }
             // Последний
-            parent.adapter!!.getItemCount() - 1 -> {
+            parent.adapter!!.itemCount - 1 -> {
+                outRect.left = PRE_FILTER_SPACE.roundToInt()
                 outRect.right = END_PADDING.roundToInt()
-
             }
             // Иной
             else -> {
-                outRect.right = SPACING.roundToInt()
+                outRect.left = SPACING.roundToInt()
             }
         }
     }

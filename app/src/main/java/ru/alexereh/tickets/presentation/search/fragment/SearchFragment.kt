@@ -138,6 +138,9 @@ class SearchFragment @Inject constructor(): BottomSheetDialogFragment() {
                 }
             }
             val navController = requireActivity().findNavController(R.id.nav_fragment_view)
+            requireActivity().onBackPressedDispatcher.addCallback(this@SearchFragment) {
+                navController.popBackStack()
+            }
             directionsRv.addItemDecoration(DirectionItemDecoration())
             difficultRouteAction.setOnClickListener {
                 navController.navigate(R.id.action_searchFragment_to_stubReturnNavFragment)
@@ -148,12 +151,10 @@ class SearchFragment @Inject constructor(): BottomSheetDialogFragment() {
             hotTickets.setOnClickListener {
                 navController.navigate(R.id.action_searchFragment_to_stubReturnNavFragment)
             }
-            requireActivity().onBackPressedDispatcher.addCallback(this@SearchFragment) {
-                navController.popBackStack()
-            }
+
             lowerEt.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    // Your action on done
+                    viewModel.saveSecondSearch(lowerEt.text.toString())
                     navController.navigate(R.id.action_searchFragment_to_selectedSearchFragment)
                     return@setOnEditorActionListener true
                 }

@@ -3,116 +3,160 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg_card_tickets"
-    android:paddingVertical="16dp"
-    android:paddingStart="16dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/price_tv"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/outer_constraint"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        tools:text="6 990 ₽" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_card_tickets"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/circle_iv"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:background="@drawable/bg_red_circle_ticket" />
+        <TextView
+            android:id="@+id/price_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/sf_pro"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="6 990 ₽" />
 
-    <TextView
-        android:id="@+id/departure_time_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        tools:text="12:00" />
+        <ImageView
+            android:id="@+id/circle_iv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/bg_red_circle_ticket" />
 
-    <TextView
-        android:id="@+id/arrival_time_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        tools:text="15:35" />
+        <TextView
+            android:id="@+id/departure_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            tools:text="12:00" />
 
-    <TextView
-        android:id="@+id/departure_airport_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        tools:text="DME" />
+        <TextView
+            android:id="@+id/arrival_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            tools:text="15:35" />
 
-    <TextView
-        android:id="@+id/arrival_airport_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        tools:text="AER" />
+        <TextView
+            android:id="@+id/departure_airport_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro"
+            android:textColor="#9F9F9F"
+            android:textStyle="normal"
+            tools:text="DME" />
+
+        <TextView
+            android:id="@+id/arrival_airport_tv"
+            android:layout_width="36dp"
+            android:layout_height="26dp"
+            android:fontFamily="@font/sf_pro"
+            android:paddingEnd="2dp"
+            android:textColor="#9F9F9F"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@+id/arrival_flow"
+            tools:text="AER" />
+
+        <LinearLayout
+            android:id="@+id/divider_container"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:paddingStart="2dp"
+            android:paddingEnd="4dp">
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/minus_divider"
+                android:layout_width="10dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                app:dividerColor="#9F9F9F" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/info_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/sf_pro"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/circle_da_flow"
+            app:layout_constraintTop_toTopOf="@id/circle_da_flow"
+            tools:text="3.5ч в пути / Без пересадок" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/departure_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="departure_time_tv,departure_airport_tv"
+            app:flow_horizontalAlign="start"
+            app:flow_verticalGap="4dp" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/arrival_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="arrival_time_tv,arrival_airport_tv"
+            app:flow_horizontalAlign="start"
+            app:flow_verticalGap="4dp" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/departure_arrival_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="departure_flow,divider_container,arrival_flow"
+            app:flow_verticalBias="0.1"
+            app:flow_verticalStyle="packed"
+            app:flow_wrapMode="aligned" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/circle_da_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:constraint_referenced_ids="circle_iv,departure_arrival_flow"
+            app:flow_horizontalGap="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_tv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:id="@+id/divider_container"
+        android:id="@+id/badge"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:paddingStart="2dp"
-        android:paddingEnd="4dp">
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_additional_text"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:visibility="gone">
 
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/minus_divider"
-            android:layout_width="10dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            app:dividerColor="#9F9F9F" />
+        <TextView
+            android:id="@+id/additional_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            tools:text="Самый удобный" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/info_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textAlignment="textStart"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/circle_da_flow"
-        app:layout_constraintTop_toTopOf="@id/circle_da_flow"
-        tools:text="3.5ч в пути / Без пересадок" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/departure_flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:constraint_referenced_ids="departure_time_tv,departure_airport_tv"
-        app:flow_horizontalAlign="start"
-        app:flow_verticalGap="4dp" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/arrival_flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:constraint_referenced_ids="arrival_time_tv,arrival_airport_tv"
-        app:flow_horizontalAlign="start"
-        app:flow_verticalGap="4dp" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/departure_arrival_flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="departure_flow,divider_container,arrival_flow"
-        app:flow_verticalBias="0.1"
-        app:flow_verticalStyle="packed"
-        app:flow_wrapMode="aligned" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/circle_da_flow"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:constraint_referenced_ids="circle_iv,departure_arrival_flow"
-
-        app:flow_horizontalGap="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/price_tv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

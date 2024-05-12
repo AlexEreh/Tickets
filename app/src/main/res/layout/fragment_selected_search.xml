@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#FF0C0C0C">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,12 +40,14 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:focusable="false"
-                android:fontFamily="sans-serif-medium"
+
+                android:fontFamily="@font/sf_pro"
+                android:paddingVertical="4dp"
                 android:hint="Откуда - Москва"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="none"
-                android:paddingVertical="8dp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textColorHint="#9F9F9F"
                 android:textCursorDrawable="@drawable/cursor_edittext_home" />
@@ -54,11 +57,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:fontFamily="sans-serif-medium"
                 android:hint="Куда - Турция"
+                android:focusable="false"
+                android:fontFamily="@font/sf_pro"
                 android:importantForAutofill="no"
-                android:inputType="textAutoComplete"
-                android:paddingVertical="8dp"
+                android:inputType="none"
+                android:paddingVertical="4dp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textColorHint="#9F9F9F"
                 android:textCursorDrawable="@drawable/cursor_edittext_home" />
@@ -124,22 +129,55 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chips_rv"
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fields" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tickets_offers_rv"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tickets_offers"
             android:layout_width="0dp"
-            android:layout_height="288dp"
+            android:layout_height="254dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/bg_tickets_offers"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chips_rv" />
+            app:layout_constraintTop_toBottomOf="@id/chips_rv">
+
+            <TextView
+                android:id="@+id/direct_offers_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Прямые рельсы"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tickets_offers_rv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:focusable="false"
+                tools:listitem="@layout/card_ticket_offer" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="direct_offers_tv,tickets_offers_rv"
+                app:flow_horizontalBias="0.5"
+                app:flow_horizontalStyle="spread"
+                app:flow_verticalGap="8dp"
+                app:flow_verticalStyle="spread"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/show_all_tickets_btn"
@@ -154,9 +192,11 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:fontFamily="@font/sf_pro"
+            android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tickets_offers_rv" />
+            app:layout_constraintTop_toBottomOf="@id/tickets_offers" />
 
         <include
             layout="@layout/button_subscription_on_price"

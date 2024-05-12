@@ -1,9 +1,9 @@
 package ru.alexereh.tickets.domain.model
 
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 data class DestinationArrivalModel(
     val town: String,
-    val date: LocalDate,
+    val date: LocalDateTime,
     val airport: String
 )

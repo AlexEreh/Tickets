@@ -4,6 +4,6 @@ import retrofit2.http.GET
 import ru.alexereh.tickets.data.remote.alltickets.dto.TicketsDTO
 
 interface AllTicketsRemoteApi {
-    @GET("https://tickets-alexereh.free.beeceptor.com/third")
-    fun getTickets(): TicketsDTO
+    @GET("a7f466047728e5daafde")
+    suspend fun getTickets(): TicketsDTO
 }

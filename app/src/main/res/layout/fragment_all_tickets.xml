@@ -31,6 +31,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:fontFamily="@font/sf_pro"
+            android:textStyle="bold"
             tools:text="Москва-Сочи" />
 
         <TextView
@@ -39,6 +41,8 @@
             android:layout_height="wrap_content"
             android:textColor="#9F9F9F"
             android:textSize="14sp"
+            android:fontFamily="@font/sf_pro"
+            android:textStyle="italic"
             tools:text="23 февраля, 1 пассажир" />
 
         <androidx.constraintlayout.helper.widget.Flow
@@ -46,8 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:constraint_referenced_ids="towns_tv,status_tv"
-            app:flow_verticalGap="4dp" />
+            app:constraint_referenced_ids="towns_tv,status_tv" />
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/toolbar_flow"
@@ -65,6 +68,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="26dp"
+        android:paddingHorizontal="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,6 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Фильтр"
+            android:fontFamily="@font/sf_pro"
+            android:textStyle="italic"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/filter_iv" />
@@ -116,6 +122,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="График цен"
+            android:fontFamily="@font/sf_pro"
+            android:textStyle="italic"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/chart_iv" />
     </androidx.constraintlayout.widget.ConstraintLayout>

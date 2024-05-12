@@ -34,6 +34,9 @@
             android:id="@+id/action_selectedSearchFragment_to_ticketsFragment"
             app:destination="@id/ticketsFragment"
             app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_selectedSearchFragment_to_allTicketsFragment"
+            app:destination="@id/allTicketsFragment" />
     </fragment>
     <fragment
         android:id="@+id/allTicketsFragment"
