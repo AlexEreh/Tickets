@@ -31,7 +31,7 @@
         app:layout_constraintStart_toEndOf="@id/notification_iv"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <Switch
         android:id="@+id/notification_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
