@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="47dp"
+            android:background="@drawable/bg_search_fields"
+            android:divider="@drawable/divider_fields_home"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:showDividers="middle"
+            app:flow_horizontalStyle="spread"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/back_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_left_arrow" />
+
+            <EditText
+                android:id="@+id/upper_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:focusable="false"
+
+                android:fontFamily="@font/sf_pro_display"
+                android:paddingVertical="4dp"
+                android:hint="@string/departure_placeholder"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="none"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_6"
+                android:textCursorDrawable="@drawable/cursor_edittext_home" />
+
+            <EditText
+                android:id="@+id/lower_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/arrival_placeholder"
+                android:focusable="false"
+                android:fontFamily="@font/sf_pro_display"
+                android:importantForAutofill="no"
+                android:inputType="none"
+                android:paddingVertical="4dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_6"
+                android:textCursorDrawable="@drawable/cursor_edittext_home" />
+
+            <ImageView
+                android:id="@+id/cross_iv"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:contentDescription="@null"
+                android:padding="4dp"
+                android:src="@drawable/ic_cross_icon" />
+
+            <ImageView
+                android:id="@+id/swap_iv"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:contentDescription="@null"
+                android:padding="4dp"
+                android:src="@drawable/ic_swap" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/fields_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/grey_4" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/upper_flow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:constraint_referenced_ids="upper_et,swap_iv"
+                app:flow_horizontalGap="6dp" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/lower_flow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:constraint_referenced_ids="lower_et,cross_iv"
+                app:flow_horizontalGap="6dp"
+                app:flow_verticalAlign="center"
+                app:flow_verticalBias="0.5" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/inner_fields_flow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="upper_flow,fields_divider,lower_flow" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/fields_flow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:constraint_referenced_ids="back_iv,inner_fields_flow"
+                app:flow_horizontalGap="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chips_rv"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fields" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tickets_offers"
+            android:layout_width="0dp"
+            android:layout_height="270dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/bg_tickets_offers"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chips_rv">
+
+            <TextView
+                android:id="@+id/direct_offers_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/direct_flights"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tickets_offers_rv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:focusable="false"
+                tools:listitem="@layout/card_ticket_offer" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="direct_offers_tv,tickets_offers_rv"
+                app:flow_horizontalBias="0.5"
+                app:flow_horizontalStyle="spread"
+                app:flow_verticalGap="8dp"
+                app:flow_verticalStyle="spread"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/show_all_tickets_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_show_all_tickets_button"
+            android:backgroundTint="@color/special_blue"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/show_all_tickets"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tickets_offers" />
+
+        <include
+            layout="@layout/button_subscription_on_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/show_all_tickets_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

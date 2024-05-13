@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">tickets</string>
+    <string name="app_bar_tickets">Авиабилеты</string>
+    <string name="app_bar_hotels">Отели</string>
+    <string name="app_bar_shorter">Короче</string>
+    <string name="app_bar_subscriptions">Подписки</string>
+    <string name="app_bar_profile">Профиль</string>
+    <string name="text_anywhere">Куда угодно</string>
+    <string name="direct_flights">Прямые рельсы</string>
+    <string name="show_all_tickets">Посмотреть все билеты</string>
+    <string name="arrival_placeholder">Куда - Турция</string>
+    <string name="departure_placeholder">Откуда - Москва</string>
+    <string name="subscription_on_price">Подписка на цену</string>
+    <string name="popular_direction">Популярное направление</string>
+    <string name="show_all_places">Показать все места</string>
+    <string name="go_musical_flight">Музыкально отлететь</string>
+    <string name="tickets_screen_title">Поиск дешёвых авиабилетов</string>
+    <string name="all_tickets_filter">Фильтр</string>
+    <string name="all_tickets_chart">График цен</string>
+    <string name="placeholder_hotels">Отели</string>
+    <string name="placeholder_profile">Профиль</string>
+    <string name="placeholder_shorter">Короче</string>
+    <string name="placeholder_subscriptions">Подписки</string>
+    <string name="clear_arrival_town_text">Clear arrival town text</string>
+    <string name="difficult_route">Сложный маршрут</string>
+    <string name="anywhere">Куда угодно</string>
+    <string name="holidays">Выходные</string>
+    <string name="hot_tickets">Горячие билеты</string>
+    <string name="placeholder_text_description">Тут пока ничего нет</string>
+    <string name="go_back">Вернуться</string>
+</resources>

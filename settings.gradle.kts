@@ -21,3 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "tickets"
 include(":app")
+include(":domain")
+include(":data")
+include(":baselineprofile")
+include(":presentation")

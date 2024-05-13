@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@color/grey_3">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/direction_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_first_direction"
+        app:shapeAppearance="@style/CornerCutSmall" />
+
+    <TextView
+        android:id="@+id/direction_town_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_display"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        tools:text="Стамбул"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/direction_popular_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_display"
+        android:textStyle="normal"
+        android:text="@string/popular_direction"
+        android:textColor="@color/grey_5"
+        android:textSize="14sp" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:dividerColor="@color/grey_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direction_horizontal_flow" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/direction_horizontal_flow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:constraint_referenced_ids="direction_iv,direction_vertical_flow"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalGap="8dp"
+        app:flow_horizontalStyle="spread"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/direction_vertical_flow"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="direction_town_tv,direction_popular_tv"
+        app:flow_verticalGap="4dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

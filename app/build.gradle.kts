@@ -1,9 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.serialization)
+    alias(libs.plugins.baselineprofile)
 }
 
 android {
@@ -24,14 +25,15 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -42,18 +44,18 @@ android {
 }
 
 dependencies {
-    implementation("androidx.multidex:multidex:2.0.1")
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    "baselineProfile"(project(":baselineprofile"))
+    implementation(libs.androidx.profileinstaller)
 
-    implementation(libs.androidx.fragment.ktx)
+    implementation(project(":data"))
+    implementation(project(":presentation"))
+    implementation(project(":domain"))
 
-    implementation(libs.androidx.datastorePreferences)
+    // MultiDex - mainly for Dagger
+    implementation(libs.androidx.multidex)
 
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.kotlinxConverter)
-    implementation(libs.kotlinx.serialization.json)
 
     // Dagger2/Hilt
     implementation(libs.dagger.hiltAndroid)
@@ -61,6 +63,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     kapt(libs.dagger.hiltAndroidCompiler)
 
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
