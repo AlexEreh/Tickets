@@ -21,3 +21,7 @@
 - Core Splashscreen API
 - RecyclerView (для списков)
 - Core Library Desugaring (чтобы был класс LocalDate)
+
+## Видео
+
+Видео по приложению находится [здесь](https://youtu.be/T_DgeO_sa7Y).
