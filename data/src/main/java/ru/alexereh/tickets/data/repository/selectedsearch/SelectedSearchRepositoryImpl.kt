@@ -5,6 +5,7 @@ import ru.alexereh.tickets.data.local.LocalDataSource
 import ru.alexereh.tickets.data.remote.selectedsearch.TicketsOffersRemoteDataSource
 import ru.alexereh.tickets.domain.model.TicketsOffersModel
 import ru.alexereh.tickets.domain.repository.SelectedSearchRepository
+import java.time.LocalDate
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,5 +32,13 @@ class SelectedSearchRepositoryImpl @Inject constructor(
 
     override fun getTicketsOffers(): Flow<TicketsOffersModel> {
         return remoteDataSource.getOffersTickets()
+    }
+
+    override fun saveDepartureDate(date: LocalDate) {
+        localDataSource.saveDepartureDate(date)
+    }
+
+    override fun saveReturnDate(date: LocalDate?) {
+        localDataSource.saveReturnDate(date)
     }
 }

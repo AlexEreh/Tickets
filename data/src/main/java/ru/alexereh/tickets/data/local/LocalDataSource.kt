@@ -6,14 +6,15 @@ import androidx.datastore.preferences.core.edit
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.time.LocalDate
 
 class LocalDataSource(
     private val preferences: DataStore<Preferences>,
     private val ioScope: CoroutineScope
 ) {
     fun saveFirstSearch(text: String) {
-        ioScope.launch {
+        runBlocking {
             preferences.edit {
                 it[DataStorePrefencesKeys.FIRST_SEARCH_KEY] = text
             }
@@ -33,7 +34,7 @@ class LocalDataSource(
     }
 
     fun saveSecondSearch(text: String) {
-        ioScope.launch {
+        runBlocking {
             preferences.edit {
                 it[DataStorePrefencesKeys.SECOND_SEARCH_KEY] = text
             }
@@ -41,12 +42,52 @@ class LocalDataSource(
     }
 
     fun swapDepartureArrivalTowns() {
-        ioScope.launch {
+        runBlocking {
             preferences.edit {
                 val first = it[DataStorePrefencesKeys.FIRST_SEARCH_KEY]!!
                 val second = it[DataStorePrefencesKeys.SECOND_SEARCH_KEY]!!
                 it[DataStorePrefencesKeys.FIRST_SEARCH_KEY] = second
                 it[DataStorePrefencesKeys.SECOND_SEARCH_KEY] = first
+            }
+        }
+    }
+
+    fun getDepartureDate(): Flow<LocalDate> {
+        return preferences.data.map {
+            val a = it[DataStorePrefencesKeys.DEPARTURE_DATE_KEY]
+            if (a == null) {
+                return@map LocalDate.now()
+            }
+            LocalDate.parse(a)
+        }
+    }
+
+    fun saveDepartureDate(date: LocalDate) {
+        runBlocking {
+            preferences.edit {
+                it[DataStorePrefencesKeys.DEPARTURE_DATE_KEY] = date.toString()
+            }
+        }
+    }
+
+    fun getReturnDate(): Flow<LocalDate?> {
+        return preferences.data.map {
+            val a = it[DataStorePrefencesKeys.RETURN_DATE_KEY]
+            if (a == "null") {
+                return@map null
+            }
+            LocalDate.parse(a)
+        }
+    }
+
+    fun saveReturnDate(date: LocalDate?) {
+        runBlocking {
+            preferences.edit {
+                if (date == null) {
+                    it[DataStorePrefencesKeys.RETURN_DATE_KEY] = "null"
+                    return@edit
+                }
+                it[DataStorePrefencesKeys.RETURN_DATE_KEY] = date.toString()
             }
         }
     }

@@ -4,6 +4,6 @@ import retrofit2.http.GET
 import ru.alexereh.tickets.data.remote.selectedsearch.dto.TicketsOffersDTO
 
 interface TicketsOffersRemoteApi {
-    @GET("07bfc68c532f32530919")
+    @GET("7e55bf02-89ff-4847-9eb7-7d83ef884017")
     suspend fun getOffersTickets(): TicketsOffersDTO
 }

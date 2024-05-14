@@ -1,12 +1,17 @@
 package ru.alexereh.tickets.presentation.selectedsearch.fragment
 
+import android.app.DatePickerDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -24,6 +29,8 @@ import ru.alexereh.tickets.presentation.selectedsearch.recycler.chips.ChipsItemD
 import ru.alexereh.tickets.presentation.selectedsearch.recycler.ticketsoffers.TicketsOffersAdapter
 import ru.alexereh.tickets.presentation.selectedsearch.recycler.ticketsoffers.TicketsOffersItemDecoration
 import ru.alexereh.tickets.presentation.selectedsearch.viewmodel.SelectedSearchViewModel
+import java.time.LocalDate
+import java.util.Calendar
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -32,17 +39,67 @@ class SelectedSearchFragment @Inject constructor() : Fragment() {
     private lateinit var viewModel: SelectedSearchViewModel
     private lateinit var adapter: TicketsOffersAdapter
 
+    class CustomDatePickerDialog(
+        private val saveDate: (LocalDate) -> Unit,
+        private val cancelable: Boolean,
+        private val cancel: (() -> Unit)? = null
+    ) : DialogFragment(), DatePickerDialog.OnDateSetListener {
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            // Use the current date as the default date in the picker.
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            return DatePickerDialog(requireContext(), this, year, month, day).apply {
+                this.setCancelable(cancelable)
+            }
+        }
+
+        override fun onCancel(dialog: DialogInterface) {
+            super.onCancel(dialog)
+            cancel?.let { it() }
+        }
+
+        override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+            saveDate(LocalDate.of(year, month + 1, dayOfMonth))
+        }
+    }
+
+    private fun onDepartureDateClicked() {
+        CustomDatePickerDialog(
+            saveDate = {
+                viewModel.saveDepartureDate(it)
+            }, cancelable = false
+        ).show(childFragmentManager, "DatePicker")
+    }
+
+    private fun onReturnDateClicked() {
+        CustomDatePickerDialog(
+            saveDate = {
+                viewModel.saveReturnDate(it)
+            },
+            cancelable = true,
+            cancel = {
+                viewModel.saveReturnDate(null)
+            }
+        ).show(childFragmentManager, "DatePicker")
+    }
+
     @Inject
     lateinit var chipsItemDecoration: ChipsItemDecoration
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(requireActivity()).get(SelectedSearchViewModel::class.java)
         binding = FragmentSelectedSearchBinding.inflate(inflater, container, false)
         with(binding) {
-            chipsRv.adapter = ChipsAdapter()
+            chipsRv.adapter = ChipsAdapter(
+                onDepartureDateClicked = ::onDepartureDateClicked,
+                onReturnDateClicked = ::onReturnDateClicked,
+                scope = lifecycleScope,
+                departureDateFlow = viewModel.departureDate,
+                returnDateFlow = viewModel.returnDate
+            )
             chipsRv.layoutManager =
                 LinearLayoutManager(chipsRv.context, LinearLayoutManager.HORIZONTAL, false)
             chipsRv.addItemDecoration(chipsItemDecoration)
@@ -55,51 +112,37 @@ class SelectedSearchFragment @Inject constructor() : Fragment() {
                 LinearLayoutManager(ticketsOffersRv.context, LinearLayoutManager.VERTICAL, false)
             ticketsOffersRv.addItemDecoration(TicketsOffersItemDecoration())
             lifecycleScope.launch {
-                viewModel.secondSearch
-                    .onEach {
+                viewModel.secondSearch.onEach {
                         lowerEt.text = SpannableStringBuilder(it)
                         lowerEt.setSelection(it.length, it.length)
                         lowerEt.clearFocus()
-                    }
-                    .catch {
+                }.catch {
                         Toast.makeText(
-                            this@SelectedSearchFragment.context,
-                            it.message,
-                            Toast.LENGTH_SHORT
+                            this@SelectedSearchFragment.context, it.message, Toast.LENGTH_SHORT
                         ).show()
-                    }
-                    .collect()
+                }.collect()
             }
             lifecycleScope.launch {
-                viewModel.firstSearch
-                    .onEach {
+                viewModel.firstSearch.onEach {
                         upperEt.text = SpannableStringBuilder(it)
                         upperEt.setSelection(it.length, it.length)
                         upperEt.clearFocus()
-                    }
-                    .catch {
+                }.catch {
                         Toast.makeText(
-                            this@SelectedSearchFragment.context,
-                            it.message,
-                            Toast.LENGTH_SHORT
+                            this@SelectedSearchFragment.context, it.message, Toast.LENGTH_SHORT
                         ).show()
-                    }
-                    .collect()
+                }.collect()
             }
             lifecycleScope.launch {
-                viewModel.ticketsOffers
-                    .onEach {
+                viewModel.ticketsOffers.onEach {
                         adapter.updateData(it)
-                    }
-                    .catch {
+                }.catch {
                         Toast.makeText(
-                            this@SelectedSearchFragment.context,
-                            it.message,
-                            Toast.LENGTH_SHORT
+                            this@SelectedSearchFragment.context, it.message, Toast.LENGTH_SHORT
                         ).show()
-                    }
-                    .collect()
+                }.collect()
             }
+            viewModel.saveReturnDate(null)
         }
         return binding.root
     }

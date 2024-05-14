@@ -1,5 +1,6 @@
 package ru.alexereh.tickets.presentation.alltickets.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,8 @@ import ru.alexereh.tickets.presentation.alltickets.recycler.AllTicketsAdapter
 import ru.alexereh.tickets.presentation.alltickets.recycler.TicketItemDecoration
 import ru.alexereh.tickets.presentation.alltickets.viewmodel.AllTicketsViewModel
 import ru.alexereh.tickets.presentation.databinding.FragmentAllTicketsBinding
+import java.time.format.TextStyle
+import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -54,6 +57,7 @@ class AllTicketsFragment @Inject constructor() : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
         with(binding) {
@@ -61,6 +65,18 @@ class AllTicketsFragment @Inject constructor() : Fragment() {
                 viewModel.destinations
                     .onEach {
                         townsTv.text = it
+                    }
+                    .collect()
+            }
+            lifecycleScope.launch {
+                viewModel.departureDate
+                    .onEach {
+                        statusTv.text = "${it.dayOfMonth} ${
+                            it.month.getDisplayName(
+                                TextStyle.FULL,
+                                Locale("ru", "RU")
+                            )
+                        }, 1 пассажир"
                     }
                     .collect()
             }

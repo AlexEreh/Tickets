@@ -28,7 +28,7 @@ class RemoteDataSourceModule {
     @Singleton
     fun provideRetrofit(json: Json): Retrofit = Retrofit.Builder()
         .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
-        .baseUrl("https://api.npoint.io/")
+        .baseUrl("https://run.mocky.io/v3/")
         .build()
 
     @Provides

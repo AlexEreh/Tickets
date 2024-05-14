@@ -4,5 +4,5 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.alexereh.tickets.presentation.databinding.ChipDateBinding
 
 class DateChipViewHolder(
-    private val binding: ChipDateBinding
+    val binding: ChipDateBinding
 ) : RecyclerView.ViewHolder(binding.root)

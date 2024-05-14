@@ -40,7 +40,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.androidx.core.splashscreen)
 
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 

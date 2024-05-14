@@ -9,12 +9,16 @@ import ru.alexereh.tickets.domain.repository.SearchRepository
 import ru.alexereh.tickets.domain.repository.SelectedSearchRepository
 import ru.alexereh.tickets.domain.repository.TicketsRepository
 import ru.alexereh.tickets.domain.usecase.ClearArrivalTownUseCase
+import ru.alexereh.tickets.domain.usecase.LoadDepartureDateUseCase
 import ru.alexereh.tickets.domain.usecase.LoadFirstSearchUseCase
 import ru.alexereh.tickets.domain.usecase.LoadOffersUseCase
+import ru.alexereh.tickets.domain.usecase.LoadReturnDateUseCase
 import ru.alexereh.tickets.domain.usecase.LoadSecondSearchUseCase
 import ru.alexereh.tickets.domain.usecase.LoadTicketsOffersUseCase
 import ru.alexereh.tickets.domain.usecase.LoadTicketsUseCase
+import ru.alexereh.tickets.domain.usecase.SaveDepartureDateUseCase
 import ru.alexereh.tickets.domain.usecase.SaveFirstSearchUseCase
+import ru.alexereh.tickets.domain.usecase.SaveReturnDateUseCase
 import ru.alexereh.tickets.domain.usecase.SaveSecondSearchUseCase
 import ru.alexereh.tickets.domain.usecase.SwapDepratureArrivalTownsUseCase
 import javax.inject.Singleton
@@ -92,5 +96,37 @@ class UseCaseModule {
         repository: SelectedSearchRepository
     ): SwapDepratureArrivalTownsUseCase {
         return SwapDepratureArrivalTownsUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSaveDepartureDateUseCase(
+        repository: SelectedSearchRepository
+    ): SaveDepartureDateUseCase {
+        return SaveDepartureDateUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLoadDepartureDateUseCase(
+        repository: AllTicketsRepository
+    ): LoadDepartureDateUseCase {
+        return LoadDepartureDateUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSaveReturnDateUseCase(
+        repository: SelectedSearchRepository
+    ): SaveReturnDateUseCase {
+        return SaveReturnDateUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLoadReturnDateUseCase(
+        repository: AllTicketsRepository
+    ): LoadReturnDateUseCase {
+        return LoadReturnDateUseCase(repository)
     }
 }
