@@ -73,7 +73,7 @@ class LocalDataSource(
     fun getReturnDate(): Flow<LocalDate?> {
         return preferences.data.map {
             val a = it[DataStorePrefencesKeys.RETURN_DATE_KEY]
-            if (a == "null") {
+            if (a == null || a == "null") {
                 return@map null
             }
             LocalDate.parse(a)

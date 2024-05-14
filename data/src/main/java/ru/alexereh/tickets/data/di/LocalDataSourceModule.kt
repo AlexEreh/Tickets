@@ -17,7 +17,7 @@ import kotlinx.coroutines.CoroutineScope
 import ru.alexereh.tickets.data.local.LocalDataSource
 import javax.inject.Singleton
 
-private const val USER_PREFERENCES = "user_preferences"
+private const val USER_PREFERENCES = "user_prefs"
 
 @Module
 @InstallIn(SingletonComponent::class)
